@@ -1,7 +1,7 @@
 :root {
-  --bg: #393d41;
-  --bg2: #050505;
-  --primary: #363636;
+  --bg: hsl(210, 24%, 11%);
+  --bg2: #1d1c1c;
+  --primary: #292a33;
   --secondary: #252627;
   --light: #e0e1dd;
   --orange: #fd9630;
