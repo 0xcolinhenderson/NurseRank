@@ -38,7 +38,7 @@ bp.add_url_rule("/register", view_func=static_views.register)
 
 bp.add_url_rule("/login", view_func=static_views.login)
 
-bp.add_url_rule("/about", view_func=static_views.login)
+bp.add_url_rule("/about", view_func=static_views.about)
 
 # Login required views
 bp.add_url_rule("/account", view_func=static_views.account)

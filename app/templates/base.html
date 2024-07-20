@@ -42,11 +42,13 @@
             <a class="nav-link fw-bold py-1 px-0 {% if current_page == label|lower %}active{% endif %}" href="{{ url }}">{{ label }}</a>
             {% endfor %}
             {% if user.is_authenticated %}
-            <a class="nav-link fw-bold py-1 px-0 {% if current_page == account|lower %}active{% endif %}" href="/account">{{ user.username }}</a>
-            <a class="nav-link fw-bold py-1 px-0" href="/logout">Log Out</a>
+                    <a class="nav-link fw-bold py-1 px-0 {% if current_page == 'account'|lower %}active{% endif %}" href="/account">{{ user.username }}</a>
+                    <a class="nav-link fw-bold py-1 px-0" href="/logout">Log Out</a>
             {% else %}
-            <a class="nav-link fw-bold py-1 px-0" href="/login">Log In</a>
-            <a class="nav-link fw-bold py-1 px-0" href="/register">Register</a>
+                {% if current_page != 'login' and current_page != 'register' %}
+                    <a class="nav-link fw-bold py-1 px-0" href="/login">Log In</a>
+                    <a class="nav-link fw-bold py-1 px-0" href="/register">Register</a>
+                {% endif %}
             {% endif %}
           </nav>
         </div>
