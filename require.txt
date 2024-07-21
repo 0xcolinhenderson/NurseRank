@@ -1,0 +1,8 @@
+flask
+pydantic
+pydantic[email]
+python-dotenv
+flask_sqlalchemy
+flask_login
+psycopg2
+bcrypt
