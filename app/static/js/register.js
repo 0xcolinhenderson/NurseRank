@@ -2,9 +2,12 @@ const register_form = document.getElementById('register_form');
 
 function register(e) {
     e.preventDefault();
-    let username = document.getElementById('username').value;
+    let firstname = document.getElementById('firstname').value;
+    let lastname = document.getElementById('lastname').value;
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
+    let password2 = document.getElementById('password2').value;
+    let rn_status = document.getElementById('rn_status').value;
 
     fetch("/api/register", {
       method: "POST",
@@ -12,7 +15,7 @@ function register(e) {
         "Content-Type": "application/json",
       },
       credentials: "same-origin",
-      body: JSON.stringify({ username: username, email: email, password: password }),
+      body: JSON.stringify({ firstname: firstname, email: email, password: password, password2 : password2, rn_status : rn_status }),
     })
     .then((res) => res.json())
     .then((data) => {

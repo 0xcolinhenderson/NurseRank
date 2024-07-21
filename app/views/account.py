@@ -10,16 +10,20 @@ from ..utils.error_utils import (
 )
 
 def register_account():
-    username = request.json.get('username')
+    firstname = request.json.get('firstname')
+    lastname = request.json.get('lastname')
     email = request.json.get('email')
     password = request.json.get('password')
+    password2 = request.json.get('password2')
+    rn_status = request.json.get('rn_status')
 
-    cleaned_username = cleaner.clean_text(username)
+    cleaned_firstname = cleaner.clean_text(firstname)
+    cleaned_lastname = cleaner.clean_text(lastname)
     cleaned_email  = cleaner.clean_text(email)
 
     try:
         user_model = account_management_services.create_account(
-            cleaned_username, cleaned_email, password
+            cleaned_firstname, cleaned_lastname, cleaned_email, password
         )
     except ValidationError as e:
         return get_validation_error_response(validation_error=e, http_status_code=422)

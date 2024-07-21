@@ -37,7 +37,8 @@ class UserRole(Base):
 class User(UserMixin, Base):
     __tablename__ = "users"
     user_id = Column(Integer, primary_key=True)
-    username = Column(Text)
+    firstname = Column(Text)
+    lastname = Column(Text)
     email = Column(String, nullable=False, unique=True)
     password_hash = Column(String(128), nullable=False)
     confirmed = Column(Boolean, nullable=False, server_default="false")

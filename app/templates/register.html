@@ -5,36 +5,41 @@
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
 <main class="form-signin w-100 m-auto" style="max-width: 500px;">
-<form>
+<form id="register_form">
   <h1 class="fw-light" style="margin-bottom: 15px;">Welcome to NurseRank!</h1>
   
   <div class="row mb-3">
     <div class="col-6">
       <div class="form-floating">
-        <input type="text" class="form-control" id="floatingFirstName" placeholder="First Name">
+        <input type="text" class="form-control" id="firstname" placeholder="First Name">
         <label for="floatingFirstName" style="color: var(--bg2)">First Name</label>
       </div>
     </div>
     <div class="col-6">
       <div class="form-floating">
-        <input type="text" class="form-control" id="floatingLastName" placeholder="Last Name">
+        <input type="text" class="form-control" id="lastname" placeholder="Last Name">
         <label for="floatingLastName" style="color: var(--bg2)">Last Name</label>
       </div>
     </div>
   </div>
 
   <div class="form-floating mb-3">
-    <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
+    <input type="email" class="form-control" id="email" placeholder="name@example.com">
     <label for="floatingEmail" style="color: var(--bg2)">Email</label>
   </div>
 
   <div class="form-floating mb-3">
-    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+    <input type="password" class="form-control" id="password" placeholder="Password">
     <label for="floatingPassword" style="color: var(--bg2)">Password</label>
   </div>
 
+  <div class="form-floating mb-3">
+    <input type="password" class="form-control" id="password2" placeholder="Password">
+    <label for="floatingPassword" style="color: var(--bg2)">Confirm Password</label>
+  </div>
+
   <div class="form-group mb-3">
-    <select class="form-control"id="inlineFormCustomSelect" style="height: calc(3.5rem + 2px);">
+    <select class="form-control"id="rn_status" style="height: calc(3.5rem + 2px);">
       <option value="N/A">I am a...</option>
       <option value="RN I">I am a RN I</option>
       <option value="RN II">I am a RN II</option>
@@ -47,5 +52,6 @@
 
   <button class="btn btn-primary w-100 py-2" type="submit" style="height: 55px; background-color: var(--orange);">Register</button>
 </form>
+<script src="/static/js/register.js"></script>
 </main>
 {% endblock %}

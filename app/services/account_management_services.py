@@ -15,9 +15,10 @@ def get_user_profile_from_user_model(user_model):
 
     return user_model_dict
 
-def create_account(sanitized_username, sanitized_email, unhashed_password):
+def create_account(sanitized_firstname, sanitized_lastname, sanitized_email, unhashed_password):
     AccountValidator(
-        username=sanitized_username,
+        firstname=sanitized_firstname,
+        lastname=sanitized_lastname,
         email=sanitized_email,
         password=unhashed_password
     )
@@ -36,7 +37,8 @@ def create_account(sanitized_username, sanitized_email, unhashed_password):
     db.session.flush()
 
     user_model = User(
-        username=sanitized_username,
+        firstname=sanitized_firstname,
+        lastname=sanitized_lastname,
         password_hash=password_hash,
         email=sanitized_email,
         account_id=account_model.account_id,
