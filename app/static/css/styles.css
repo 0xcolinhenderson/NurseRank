@@ -157,3 +157,8 @@ main {
   min-width: 20%; /* Ensure the form doesn't get too small on small screens */
   margin: 0 auto; /* Center the form horizontally */
 }
+
+.form-control:focus {
+  border-color: var(--orange);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--orange);
+}
