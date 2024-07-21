@@ -2,15 +2,18 @@
 {% block title %}NurseRank: Home{% endblock %}
 {% block content %}
 <main>
-    <div class="container py-4" style="width: 100%">
-      <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-        <div class="container-fluid py-5">
-          <h1 class="display-5 fw-bold">Custom jumbotron</h1>
-          <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
-          <button class="btn btn-primary btn-lg" type="button">Example button</button>
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">Welcome to NurseRank!</h1>
+          <p class="lead text-body-secondary">A quick and easy way to manage YOUR rank on the ladder (gonna need ur help on this one mom).</p>
+          <p>
+            <a href="#" class="btn btn-primary my-2">Sign Up</a>
+            <a href="#" class="btn btn-secondary my-2">Or Log In</a>
+          </p>
         </div>
       </div>
-    </div>
+    </section>
   </main>
-  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock %}

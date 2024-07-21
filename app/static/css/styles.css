@@ -9,7 +9,7 @@
   --border: #3f3e3e;
 }
 
-html {
+html,body {
   margin: 0;
   height: 100%;
 }
@@ -71,7 +71,7 @@ main {
 }
 
 .nav-masthead .nav-link {
-  margin-left: .5rem;
+  margin-left: 15px;
 }
 
 .nav-masthead .active {
@@ -82,7 +82,6 @@ main {
 .navbar-nav {
   flex-direction: row;
   margin-left: auto; /* Ensure the navbar is pushed to the right */
-  margin-top: 10px; /* Adjust this value to control the distance */
 }
 
 .btn-light,
@@ -153,4 +152,8 @@ main {
 
 .spacer {
   margin-top: 30%;
+}
+
+.btn-secondary  {
+  background-color: var(--orange);
 }
