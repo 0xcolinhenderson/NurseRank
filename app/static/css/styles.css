@@ -5,11 +5,17 @@
   --secondary: #252627;
   --light: #e0e1dd;
   --orange: #fd9630;
-  --teritary:#79726b;
-  --border:#fd9630;
+  --teritary: #79726b;
+  --border: #3f3e3e;
+  --btn-bg: #fd9630; /* Custom button background color */
+  --btn-text: #ffffff; /* Custom button text color */
+  --btn-hover-bg: #e67e22; /* Custom button hover background color */
+  --btn-border: #fd9630; /* Custom button border color */
+  --btn-active-bg: #d35400; /* Custom button active background color */
+  --btn-active-border: #d35400; /* Custom button active border color */
 }
 
-html{
+html {
   margin: 0;
   height: 100%;
 }
@@ -29,11 +35,11 @@ h3.float-md-start.mb-0 {
 }
 
 footer {
-  position:fixed;
-  left:0px;
-  bottom:0px;
-  height:30px;
-  width:100%;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 30px;
+  width: 100%;
 }
 
 .cover-container {
@@ -102,7 +108,7 @@ main {
 }
 
 .form-signin {
-  max-width: 330px;
+  margin: 0 auto; /* Center the form horizontally */
   padding: 1rem;
 }
 
@@ -110,21 +116,44 @@ main {
   z-index: 2;
 }
 
-.form-signin input[type="email"] {
-  margin-bottom: 10px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
 .form-floating input[type="email"],
 .form-floating input[type="password"] {
   background-color: var(--teritary);
   color: var(--light); /* Optional: Change text color for better readability */
-  border-color: var(--primary);
+  border-color: var(--border);
+  max-width: 50%; /* Set width to one fifth of the screen */
+  min-width: 20%; /* Ensure the form doesn't get too small on small screens */
+  margin: 0 auto; /* Center the form horizontally */
+  margin-bottom: 5px;
+  padding: 1rem;
+}
+
+.form-floating label {
+  padding: 0.75rem 1rem; /* Add some padding to align the label with the input text */
+}
+
+.btn-primary {
+  background-color: var(--bg2);
+  color: var(--light);
+  border-color: var(--light);
+  max-width: 50%; /* Set width to one fifth of the screen */
+  min-width: 20%; /* Ensure the form doesn't get too small on small screens */
+  margin: 0 auto; /* Center the form horizontally */
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--primary);
+  border-color: var(--light);
+}
+
+.btn-primary:active {
+  background-color: var(--orange)!important;
+  border-color: var(--light);
+}
+
+.form-check-label {
+  max-width: 50%; /* Set width to one fifth of the screen */
+  min-width: 20%; /* Ensure the form doesn't get too small on small screens */
+  margin: 0 auto; /* Center the form horizontally */
 }
