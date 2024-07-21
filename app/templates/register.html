@@ -3,6 +3,7 @@
 {% block content %}
 
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
 <main class="form-signin w-100 m-auto" style="max-width: 500px;">
 <form>
   <h1 class="fw-light" style="margin-bottom: 15px;">Welcome to NurseRank!</h1>
@@ -32,14 +33,19 @@
     <label for="floatingPassword" style="color: var(--bg2)">Password</label>
   </div>
 
-  <div class="form-check text-start my-3">
-    <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-    <label class="form-check-label" for="flexCheckDefault">
-      Remember me
-    </label>
+  <div class="form-group mb-3">
+    <select class="form-control"id="inlineFormCustomSelect" style="height: calc(3.5rem + 2px);">
+      <option value="N/A">I am a...</option>
+      <option value="RN I">I am a RN I</option>
+      <option value="RN II">I am a RN II</option>
+      <option value="RN III">I am a RN III</option>
+      <option value="RN IV">I am a RN IV</option>
+      <option value="RN V">I am a RN V</option>
+      <option value="Other">I am something else!</option>
+    </select>
   </div>
 
-  <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+  <button class="btn btn-primary w-100 py-2" type="submit" style="height: 55px; background-color: var(--orange);">Register</button>
 </form>
 </main>
 {% endblock %}

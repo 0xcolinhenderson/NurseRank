@@ -185,8 +185,11 @@ main {
 .btn-secondary  {
   background-color: var(--orange);
 }
-.cover-container {
-  padding-top: 60px; /* Adjust this value if needed */
-  max-width: 100%; /* Ensure full-width content */
-  margin: 0 auto; /* Center content horizontally */
+
+
+.custom-select {
+  max-width: 400px;
+  padding: 1rem;
+  color: var(--bg2);
+  border-radius: 10px;
 }
