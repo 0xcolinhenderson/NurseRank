@@ -36,12 +36,42 @@ footer {
   width: 100%;
 }
 
-.cover-container {
-  max-width: 42em;
-}
-
 main {
   margin-top: 5%;
+}
+
+.nav-link {
+  white-space: nowrap;
+}
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+.navbar-brand img {
+  margin-right: 10px; /* Adjust spacing between logo and text */
+}
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+.nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+.cover-container {
+  padding-top: 60px; /* Adjust this value if needed */
+  max-width: 100%; /* Ensure full-width content */
+  margin: 0 auto; /* Center content horizontally */
+}
+
+.nav-link {
+  color: #ffffff; /* Set text color for nav links */
 }
 
 .nav-link {
@@ -54,6 +84,7 @@ main {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding: 0 15px; /* Ensure padding around the container */
 }
 
 .navbar {
@@ -80,8 +111,9 @@ main {
 }
 
 .navbar-nav {
-  flex-direction: row;
-  margin-left: auto; /* Ensure the navbar is pushed to the right */
+  margin-left: 0;
+  margin-right: 0;
+  flex-grow: 1; /* Allow navbar items to grow and center */
 }
 
 .btn-light,
@@ -156,4 +188,9 @@ main {
 
 .btn-secondary  {
   background-color: var(--orange);
+}
+.cover-container {
+  padding-top: 60px; /* Adjust this value if needed */
+  max-width: 100%; /* Ensure full-width content */
+  margin: 0 auto; /* Center content horizontally */
 }
