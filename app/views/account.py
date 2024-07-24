@@ -15,7 +15,6 @@ def register_account():
     email = request.json.get('email')
     password = request.json.get('password')
     password2 = request.json.get('password2')
-    rn_status = request.json.get('rn_status')
 
     cleaned_firstname = cleaner.clean_text(firstname)
     cleaned_lastname = cleaner.clean_text(lastname)
@@ -36,7 +35,7 @@ def register_account():
 
     login_user(user_model, remember=True)
 
-    return {"message": "success"}, 201
+    return redirect(url_for("routes.account"))
 
 def login_account():
     unsafe_email = request.json.get("email")
@@ -44,27 +43,24 @@ def login_account():
 
     sanitized_email = cleaner.clean_text(unsafe_email)
 
-    print(f"Login attempt: email={sanitized_email}, password={password}")
-
     try:
         user_model = account_management_services.verify_login(sanitized_email, password)
-        print(f"Login successful: {user_model.email}")
     except ValidationError as e:
-        print(f"Validation error: {e}")
         return get_validation_error_response(validation_error=e, http_status_code=422)
     except errors.CouldNotVerifyLogin as e:
-        print(f"Could not verify login: {e}")
         return get_business_requirement_error_response(
             business_logic_error=e, http_status_code=401
         )
 
     login_user(user_model, remember=True)
-    return {"message": "success"}
+
+    # Redirect to / after successful login
+    return redirect(url_for('routes.index'))
 
 
 def logout_account():
     logout_user()
-    return redirect(url_for("index"))
+    return redirect(url_for("routes.index"))
 
 
 @login_required

@@ -17,10 +17,6 @@ def get_user_profile_from_user_model(user_model):
 
 def create_account(sanitized_firstname, sanitized_lastname, sanitized_email, unhashed_password):
     try:
-        print(sanitized_firstname)
-        print(sanitized_lastname)
-        print(sanitized_email)
-        print(unhashed_password)
         AccountValidator(
             firstname=sanitized_firstname,
             lastname=sanitized_lastname,
