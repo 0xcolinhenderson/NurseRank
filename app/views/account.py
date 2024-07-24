@@ -34,7 +34,7 @@ def register_account():
         return get_db_error_response(db_error=e, http_status_code=500)
 
     login_user(user_model, remember=True)
-
+    print("Redirecting to account page...")
     return redirect(url_for("routes.account"))
 
 def login_account():
@@ -53,9 +53,9 @@ def login_account():
         )
 
     login_user(user_model, remember=True)
-
+    print("Redirecting to home page...")
     # Redirect to / after successful login
-    return redirect(url_for('routes.index'))
+    return redirect(url_for("routes.index"))
 
 
 def logout_account():
