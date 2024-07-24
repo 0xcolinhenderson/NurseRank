@@ -34,8 +34,9 @@ def register_account():
         return get_db_error_response(db_error=e, http_status_code=500)
 
     login_user(user_model, remember=True)
-    print("Redirecting to account page...")
-    return redirect(url_for("routes.account"))
+
+    # Return a JSON response with the redirect URL
+    return jsonify({"redirect": url_for("routes.account")})
 
 def login_account():
     unsafe_email = request.json.get("email")
