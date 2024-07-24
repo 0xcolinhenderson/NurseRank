@@ -16,25 +16,33 @@ def get_user_profile_from_user_model(user_model):
     return user_model_dict
 
 def create_account(sanitized_firstname, sanitized_lastname, sanitized_email, unhashed_password):
+    print(sanitized_firstname)
+    print(sanitized_lastname)
+    print(sanitized_email)
+    print(unhashed_password)
     AccountValidator(
         firstname=sanitized_firstname,
         lastname=sanitized_lastname,
         email=sanitized_email,
         password=unhashed_password
     )
-
+    print('a')
     if (
         db.session.query(User.email).filter_by(email=sanitized_email).first()
         is not None
     ):
+        print('a2')
         raise errors.EmailAddressAlreadyExistsError()
+    print('b')
 
     hash = bcrypt.hashpw(unhashed_password.encode(), bcrypt.gensalt())
     password_hash = hash.decode()
+    print('c')
 
     account_model = Account()
     db.session.add(account_model)
     db.session.flush()
+    print('d')
 
     user_model = User(
         firstname=sanitized_firstname,
@@ -43,9 +51,14 @@ def create_account(sanitized_firstname, sanitized_lastname, sanitized_email, unh
         email=sanitized_email,
         account_id=account_model.account_id,
     )
+    print('e')
+
+
+    print(f"user created @:{user_model.firstname} | ID #{user_model.account_id}")
 
     db.session.add(user_model)
     db.session.commit()
+    print('e')
 
     return user_model
 
