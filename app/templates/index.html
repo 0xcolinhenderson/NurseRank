@@ -8,10 +8,14 @@
         <div class="col-lg-6 col-md-8 mx-auto" style="width:1000px;">
           <h1 class="fw-light">Welcome to NurseRank!</h1>
           <p class="lead text-body-primary">A quick and easy way to manage YOUR rank on the ladder (gonna need ur help on this one mom).</p>
+          {% if user.is_authenticated %}
+          <p class="lead text-body-primary">You are signed in. Hello, <strong style="color:var(--orange)">{{ user.firstname }}</strong>!</p>
+          {% else %}
           <p>
             <a href="/register" class="btn btn-primary my-2">Sign Up</a>
             <a href="/login" class="btn btn-secondary my-2">Or Log In</a>
           </p>
+          {% endif %}
         </div>
       </div>
     </section>

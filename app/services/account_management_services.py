@@ -59,6 +59,7 @@ def create_account(sanitized_firstname, sanitized_lastname, sanitized_email, unh
         raise e
 
 def verify_login(sanitized_email, password):
+    print("hello")
     EmailValidator(email=sanitized_email)
 
     user_model = db.session.query(User).filter_by(email=sanitized_email).first()

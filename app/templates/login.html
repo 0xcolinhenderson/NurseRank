@@ -4,14 +4,14 @@
 
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 <main class="form-signin w-100 m-auto">
-<form>
+<form id="login_form">
   <h1 class="fw-light" style="margin-bottom: 15px";>Welcome back!</h1>
     <div class="form-floating mb-3">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="email" class="form-control" id="email" placeholder="name@example.com">
       <label for="floatingInput" style="color: var(--bg2)">Email address</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" class="form-control" id="password" placeholder="Password">
       <label for="floatingPassword" style="color: var(--bg2)">Password</label>
     </div>
 
@@ -23,5 +23,6 @@
     </div>
     <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
   </form>
+ <script src="/static/js/login.js"></script>
 </main>
 {% endblock %}

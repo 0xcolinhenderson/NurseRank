@@ -44,17 +44,21 @@ def login_account():
 
     sanitized_email = cleaner.clean_text(unsafe_email)
 
+    print(f"Login attempt: email={sanitized_email}, password={password}")
+
     try:
         user_model = account_management_services.verify_login(sanitized_email, password)
+        print(f"Login successful: {user_model.email}")
     except ValidationError as e:
+        print(f"Validation error: {e}")
         return get_validation_error_response(validation_error=e, http_status_code=422)
     except errors.CouldNotVerifyLogin as e:
+        print(f"Could not verify login: {e}")
         return get_business_requirement_error_response(
             business_logic_error=e, http_status_code=401
         )
 
     login_user(user_model, remember=True)
-
     return {"message": "success"}
 
 
