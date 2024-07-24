@@ -1,4 +1,4 @@
-from flask import request, redirect, url_for
+from flask import request, redirect, url_for, jsonify
 from flask_login import login_user, logout_user, login_required,  current_user
 from pydantic import ValidationError
 from  ..utils import cleaner, errors
@@ -53,9 +53,10 @@ def login_account():
         )
 
     login_user(user_model, remember=True)
-    print("Redirecting to home page...")
-    # Redirect to / after successful login
-    return redirect(url_for("routes.index"))
+
+    # Return a JSON response with the redirect URL
+    return jsonify({"redirect": url_for('routes.index')})
+
 
 
 def logout_account():

@@ -116,6 +116,13 @@ main {
   margin-left: 0;
   margin-right: 0;
   flex-grow: 1; /* Allow navbar items to grow and center */
+  display: flex;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Align items */
+  width: 100%;
 }
 
 .btn-light,
@@ -192,4 +199,8 @@ main {
   padding: 1rem;
   color: var(--bg2);
   border-radius: 10px;
+}
+
+header.fixed-top {
+  padding-top: 0; /* Adjust as needed */
 }
