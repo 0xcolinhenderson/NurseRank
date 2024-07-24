@@ -205,3 +205,6 @@ main {
 header.fixed-top {
   padding-top: 0; /* Adjust as needed */
 }
+label{
+  color: var(--primary);
+}

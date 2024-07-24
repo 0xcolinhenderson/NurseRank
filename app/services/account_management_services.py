@@ -66,3 +66,17 @@ def verify_login(sanitized_email, password):
         raise errors.CouldNotVerifyLogin()
 
     return user_model
+
+def update_user_info(user, firstname, lastname):
+    try:
+        # Validate the firstname and lastname using Pydantic or custom validators
+        AccountValidator(firstname=firstname, lastname=lastname)
+        
+        # Update user fields
+        user.firstname = firstname
+        user.lastname = lastname
+        
+        # Commit changes to the database
+        db.session.commit()
+    except Exception as e:
+        raise errors.InternalDbError(e)

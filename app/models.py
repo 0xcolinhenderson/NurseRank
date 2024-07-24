@@ -45,6 +45,8 @@ class User(UserMixin, Base):
     created_at = Column(DateTime, nullable=False, server_default=func.now())
     account_id = Column(Integer, ForeignKey("accounts.account_id"), nullable=False)
     account = relationship("Account", back_populates="users")
+    nurse_id = Column(Integer, ForeignKey("nurses.id"), nullable=True)
+    nurse = relationship("Nurse", back_populates="users", foreign_keys=[nurse_id])
     roles = relationship("Role", secondary="users_x_roles")
 
     def get_id(self):
@@ -52,3 +54,13 @@ class User(UserMixin, Base):
 
     def __repr__(self):
         return f"<User {self.email}>"
+    
+class Nurse(Base):
+    __tablename__ = "nurses"
+    associated_user_id= Column(Integer, ForeignKey("users.user_id"), nullable=True)
+    id = Column(Integer, primary_key=True)
+    manager = Column(String(128), server_default="")
+    department_name = Column(String(128), server_default="")
+    department_id = Column(String(128), server_default="")
+    rn_level = Column(String(128), server_default="N/A")
+    users = relationship("User", back_populates="nurse", foreign_keys=[User.nurse_id])

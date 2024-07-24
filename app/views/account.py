@@ -1,5 +1,6 @@
-from flask import request, redirect, url_for, jsonify
+from flask import request, redirect, url_for, jsonify, flash, render_template
 from flask_login import login_user, logout_user, login_required,  current_user
+from app import db_manager
 from pydantic import ValidationError
 from  ..utils import cleaner, errors
 from ..services import account_management_services
@@ -91,3 +92,25 @@ def email():
         return get_db_error_response(db_error=e, http_status_code=500)
 
     return {"message": "success"}, 201
+
+@login_required
+def edit_account():
+    firstname = request.form.get("firstname")
+    lastname = request.form.get("lastname")
+
+    cleaned_firstname = cleaner.clean_text(firstname)
+    cleaned_lastname = cleaner.clean_text(lastname)
+
+    try:
+        account_management_services.update_user_info(
+            user=current_user,
+            firstname=cleaned_firstname,
+            lastname=cleaned_lastname
+        )
+    except ValidationError as e:
+        return get_validation_error_response(validation_error=e, http_status_code=422)
+    except errors.InternalDbError as e:
+        return get_db_error_response(db_error=e, http_status_code=500)
+
+    flash("Your account has been updated.", "success")
+    return redirect(url_for("routes.account"))
