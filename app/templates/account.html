@@ -1,5 +1,119 @@
 {% extends "base.html" %}
-{% block title %}NurseRank: About{% endblock %}
+
 {% block content %}
-Account page.
+<main class="form-edit-account">
+    <div class="container mt-5">
+        <h1 class="mb-4">Edit Account</h1>
+        <div class="row mb-4">
+            <!-- Profile Picture and Form -->
+            <div class="col-md-3 text-center">
+                <img src="{{ user.profile_picture }}" alt="Profile Picture" class="img-fluid rounded-circle mb-3" style="max-width: 150px;">
+                <form action="/upload_profile_picture" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="profile_picture" class="form-control mb-2">
+                    <button type="submit" class="btn btn-primary">Upload Profile Picture</button>
+                </form>
+            </div>
+            <div class="col-md-9">
+                <form>
+                    <!-- Personal Information -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="firstname" placeholder="First Name" value="{{ user.firstname }}">
+                                <label for="firstname">First Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="lastname" placeholder="Last Name" value="{{ user.lastname }}">
+                                <label for="lastname">Last Name</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <input type="email" class="form-control" id="email" placeholder="Email" value="{{ user.email }}" readonly>
+                            <label for="email">Email (Uneditable)</label>
+                        </div>
+                    </div>
+
+                    <!-- Department Information -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="deptName" placeholder="Department Name" value="{{ user.dept_name }}">
+                                <label for="deptName">Department Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="deptNumber" placeholder="Department Number" value="{{ user.dept_number }}">
+                                <label for="deptNumber">Department Number</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="managerLastName" placeholder="Manager Last Name" value="{{ user.manager_last_name }}">
+                            <label for="managerLastName">Manager Last Name</label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="rnLevel" placeholder="RN Level" value="{{ user.rn_level }}">
+                            <label for="rnLevel">RN Level</label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Dates Section -->
+        <div class="mb-4 p-4 bg-light border rounded">
+            <h2 class="mb-4">Renewal/Promotion Dates</h2>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for date, type in user.dates %}
+                    <tr>
+                        <td>{{ date }}</td>
+                        <td>{{ type }}</td>
+                        <td>
+                            <a href="/edit_date/{{ date.id }}" class="btn btn-warning btn-sm">Edit</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="3">
+                            <a href="/add_date" class="btn btn-success btn-sm">Add New Date</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Files Section -->
+        <div class="p-4 bg-light border rounded">
+            <h2 class="mb-4">Files</h2>
+            <ul class="list-group">
+                {% for file in user.files %}
+                <li class="list-group-item">
+                    <a href="{{ file.url }}" class="btn btn-primary" download>{{ file.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</main>
 {% endblock %}

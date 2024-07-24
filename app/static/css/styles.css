@@ -68,6 +68,7 @@ main {
 }
 .cover-container {
   padding-top: 60px; /* Adjust this value if needed */
+  min-width: 50%;
   max-width: 100%; /* Ensure full-width content */
   margin: 0 auto; /* Center content horizontally */
 }
