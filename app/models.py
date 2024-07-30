@@ -55,6 +55,9 @@ class User(UserMixin, Base):
     def __repr__(self):
         return f"<User {self.email}>"
     
+    def get_user_roles(self):
+        return db_manager.session.query(Role.name).join(UserRole).filter(UserRole.user_id == self.user_id).all()
+    
 class Nurse(Base):
     __tablename__ = "nurses"
     associated_user_id= Column(Integer, ForeignKey("users.user_id"), nullable=True)
