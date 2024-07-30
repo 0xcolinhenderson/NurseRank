@@ -62,6 +62,9 @@ class Nurse(Base):
     __tablename__ = "nurses"
     associated_user_id= Column(Integer, ForeignKey("users.user_id"), nullable=True)
     id = Column(Integer, primary_key=True)
+    firstname = Column(Text)
+    lastname = Column(Text)
+    email = Column(String, nullable=False, unique=True)
     manager = Column(String(128), server_default="")
     department_name = Column(String(128), server_default="")
     department_id = Column(String(128), server_default="")

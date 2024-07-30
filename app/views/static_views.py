@@ -1,6 +1,8 @@
 from flask import render_template
 from flask_login import login_required, current_user
 from ..permissions import roles_required
+from app import db_manager
+from ..models import Nurse
 
 navbar = {
     'Home' : '/',
@@ -47,6 +49,7 @@ def edit_account():
 @login_required
 @roles_required(["admin"])
 def admin():
+    nurses = db_manager.session.query(Nurse).all()
     roles = get_user_roles()
-    return render_template("admin.html",current_page='admin', navbar_pages = admin_navbar, user = current_user,roles=roles)
+    return render_template("admin.html",current_page='admin', navbar_pages = admin_navbar, user = current_user,roles=roles, nurses=nurses)
 
