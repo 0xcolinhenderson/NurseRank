@@ -208,3 +208,14 @@ header.fixed-top {
 label{
   color: var(--primary);
 }
+
+h1 {
+  font-size: 2.5rem; /* or any desired size */
+  font-weight: 300;
+}
+
+p {
+  font-size: 1rem; /* or any desired size */
+  font-weight: 300;
+  line-height: 1.5;
+}

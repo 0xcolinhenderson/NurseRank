@@ -1,24 +1,23 @@
 {% extends "base.html" %}
 {% block title %}NurseRank: Home{% endblock %}
 {% block content %}
-<main>
-  <div style="margin-top: 200px;"></div>
-    <section class="py-5 text-center container">
-      <div class="row py-lg-5">
-        <div class="col-lg-6 col-md-8 mx-auto" style="width:1000px;">
-          <h1 class="fw-light">Welcome to NurseRank!</h1>
-          <p class="lead text-body-primary">A quick and easy way to manage your RN ladder rank.</p>
-          {% if user.is_authenticated %}
-          <p class="lead text-body-primary">You are signed in. Hello, <strong style="color:var(--orange)">{{ user.firstname }}</strong>!</p>
-          {% else %}
-          <p>
-            <a href="/register" class="btn btn-primary my-2">Sign Up</a>
-            <a href="/login" class="btn btn-secondary my-2">Or Log In</a>
-          </p>
-          {% endif %}
+<main class="d-flex align-items-center justify-content-center" style="height: 85vh;">
+    <section class="text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto" style="width: 1000px;">
+                <h1 class="fw-light">Welcome to NurseRank!</h1>
+                <p class="lead text-body-primary" style="margin-bottom: 5px;">A quick and easy way to manage your RN ladder rank.</p>
+                {% if user.is_authenticated %}
+                <p class="lead text-body-secondary"><small>You are signed in. Hello, <a href='/account' style="color:var(--orange)"><strong style="color:var(--orange)">{{ user.firstname }}</strong></a>!</small></p>
+                {% else %}
+                <p>
+                    <a href="/register" class="btn btn-primary my-2">Sign Up</a>
+                    <a href="/login" class="btn btn-secondary my-2">Or Log In</a>
+                </p>
+                {% endif %}
+            </div>
         </div>
-      </div>
     </section>
-  </main>
+</main>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock %}

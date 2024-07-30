@@ -10,7 +10,6 @@ navbar = {
 admin_navbar = {
     'Home' : '/',
     'About' : '/about',
-    'Manage' : '/admin'
 }
 
 def get_user_roles():
