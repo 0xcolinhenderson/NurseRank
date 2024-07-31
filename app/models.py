@@ -64,7 +64,7 @@ class Nurse(Base):
     id = Column(Integer, primary_key=True)
     firstname = Column(Text)
     lastname = Column(Text)
-    email = Column(String, nullable=False, unique=True)
+    email = Column(String, unique=True)
     manager = Column(String(128), server_default="")
     department_name = Column(String(128), server_default="")
     department_id = Column(String(128), server_default="")

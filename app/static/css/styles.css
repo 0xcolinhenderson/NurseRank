@@ -219,3 +219,41 @@ p {
   font-weight: 300;
   line-height: 1.5;
 }
+
+th.sortable {
+  cursor: pointer;
+  color: inherit;
+}
+
+th.sortable span {
+  margin-left: 5px;
+}
+
+.scaled-table {
+  transform: scale(1);
+  transform-origin: top left;
+}
+
+@media (max-width: 1200px) {
+  .scaled-table {
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 992px) {
+  .scaled-table {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 768px) {
+  .scaled-table {
+    transform: scale(0.7);
+  }
+}
+
+@media (max-width: 576px) {
+  .scaled-table {
+    transform: scale(0.6);
+  }
+}
