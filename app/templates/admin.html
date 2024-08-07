@@ -20,7 +20,7 @@
       </thead>
       <tbody>
         {% for nurse in nurses %}
-        <tr>
+        <tr onclick= "redirectToUser('{{ nurse.id }}')" class="clickable-row">
           <td>{{ nurse.id }}</td>
           <td>{{ nurse.lastname }}</td>
           <td>{{ nurse.firstname }}</td>
@@ -89,5 +89,10 @@ function sortTable(columnIndex) {
   sortedHeader.style.color = "var(--orange)";
   sortedHeader.querySelector("span").innerHTML = direction == "asc" ? "▲" : "▼";
 }
+
+function redirectToUser(nurseId) {
+  window.location.href = `/users/id=${nurseId}`;
+}
+
 </script>
 {% endblock %}

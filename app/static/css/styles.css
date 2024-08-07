@@ -261,3 +261,10 @@ th.sortable span {
 table tr td, table tr th{
   background-color: rgba(32, 32, 31, 0.3) !important;
 }
+
+.clickable-row {
+  cursor: pointer;
+}
+.clickable-row:hover {
+  background-color: rgba(255, 196, 0, 0.315); /* Darker color for hover effect */
+}
