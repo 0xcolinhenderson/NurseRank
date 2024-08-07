@@ -61,7 +61,7 @@ class User(UserMixin, Base):
 class Nurse(Base):
     __tablename__ = "nurses"
     associated_user_id= Column(Integer, ForeignKey("users.user_id"), nullable=True)
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     firstname = Column(Text)
     lastname = Column(Text)
     email = Column(String, unique=True)
@@ -69,4 +69,6 @@ class Nurse(Base):
     department_name = Column(String(128), server_default="")
     department_id = Column(String(128), server_default="")
     rn_level = Column(String(128), server_default="N/A")
+    status = Column(String(128))
+    healthstream = Column(Boolean)
     users = relationship("User", back_populates="nurse", foreign_keys=[User.nurse_id])

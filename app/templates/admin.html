@@ -1,19 +1,21 @@
 {% extends "base.html" %}
 {% block title %}NurseRank: Account{% endblock %}
 {% block content %}
-<div class="container mt-5">g
+<div class="container mt-5">
   <div class="table-wrapper">
-    <table class="table table-dark table-striped scaled-table" style="margin-top: 0px;" id="nursesTable">
+    <table class="table table-dark table-condensed table-bordered" style="margin-top: 0px;" id="nursesTable">
       <thead>
         <tr>
           <th scope="col" class="sortable" onclick="sortTable(0)">ID <span></span></th>
           <th scope="col" class="sortable" onclick="sortTable(1)">Last Name <span></span></th>
           <th scope="col" class="sortable" onclick="sortTable(2)">First Name <span></span></th>
-          <th scope="col" class="sortable" onclick="sortTable(3)">Email <span></span></th>
-          <th scope="col" class="sortable" onclick="sortTable(4)">Level <span></span></th>
-          <th scope="col" class="sortable" onclick="sortTable(5)">Manager <span></span></th>
-          <th scope="col" class="sortable" onclick="sortTable(6)">Department Name <span></span></th>
-          <th scope="col" class="sortable" onclick="sortTable(7)">Department ID <span></span></th>
+          <th scope="col" class="sortable" onclick="sortTable(3)">Department ID <span></span></th>
+          <th scope="col" class="sortable" onclick="sortTable(4)">Department <span></span></th>
+          <th scope="col" class="sortable" onclick="sortTable(5)">Rank <span></span></th>
+          <th scope="col" class="sortable" onclick="sortTable(6)">Manager Last Name <span></span></th>
+          <th scope="col" class="sortable" onclick="sortTable(7)">Current Status <span></span></th>
+          <th scope="col" class="sortable" onclick="sortTable(8)">Upcoming Renewal Date <span></span></th>
+          <th scope="col" class="sortable" onclick="sortTable(9)">Healthstream <span></span></th>
         </tr>
       </thead>
       <tbody>
@@ -22,11 +24,13 @@
           <td>{{ nurse.id }}</td>
           <td>{{ nurse.lastname }}</td>
           <td>{{ nurse.firstname }}</td>
-          <td>{{ nurse.email }}</td>
+          <td>{{ nurse.department_id }}</td>
+          <td>{{ nurse.department_name }}</td>
           <td>{{ nurse.rn_level }}</td>
           <td>{{ nurse.manager }}</td>
-          <td>{{ nurse.department_name }}</td>
-          <td>{{ nurse.department_id }}</td>
+          <td>{{ nurse.status}}</td>
+          <td>Dates</td>
+          <td>{% if nurse.healthstream %}✓{% else %}✗{% endif %}</td>
         </tr>
         {% endfor %}
       </tbody>

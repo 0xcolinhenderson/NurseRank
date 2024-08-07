@@ -1,6 +1,6 @@
 import bcrypt
 from app import db_manager as db
-from ..models import User, Account
+from ..models import User, Account, Nurse
 from ..utils import errors
 from ..utils.validators import AccountValidator, EmailValidator
 
@@ -49,6 +49,19 @@ def create_account(sanitized_firstname, sanitized_lastname, sanitized_email, unh
         db.session.add(user_model)
         db.session.commit()
 
+        existing_nurse = db.session.query(Nurse).filter_by(firstname=sanitized_firstname, lastname=sanitized_lastname).first()
+        if existing_nurse is not None:
+            existing_nurse.associated_user_id = user_model.get_id()
+        else:
+            new_nurse = Nurse(
+                firstname=sanitized_firstname,
+                lastname=sanitized_lastname,
+                associated_user_id=user_model.get_id()
+            )
+            db.session.add(new_nurse)
+
+        db.session.commit()
+
         return user_model
     except Exception as e:
         print(f"An error occurred: {e}")
@@ -69,14 +82,11 @@ def verify_login(sanitized_email, password):
 
 def update_user_info(user, firstname, lastname):
     try:
-        # Validate the firstname and lastname using Pydantic or custom validators
         AccountValidator(firstname=firstname, lastname=lastname)
-        
-        # Update user fields
+
         user.firstname = firstname
         user.lastname = lastname
-        
-        # Commit changes to the database
+
         db.session.commit()
     except Exception as e:
         raise errors.InternalDbError(e)

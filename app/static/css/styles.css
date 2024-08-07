@@ -257,3 +257,7 @@ th.sortable span {
     transform: scale(0.6);
   }
 }
+
+table tr td, table tr th{
+  background-color: rgba(32, 32, 31, 0.3) !important;
+}
